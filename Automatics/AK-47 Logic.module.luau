@@ -134,7 +134,6 @@ function Logic.fireBullet(Actor: Actor, InfoTable: ShotInfo)
 		WeaponEffects:FireClient(
 			OtherPlayer,
 			AK47,
-			Actor,
 			Automatics.getPackedVector(HitPosition),
 			MaterialName,
 			HitPart
