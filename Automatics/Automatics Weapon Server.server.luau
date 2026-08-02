@@ -71,7 +71,7 @@ local function InitializeWeapon(WeaponContainer: Model)
 end
 
 for _, WeaponContainer in pairs(WeaponsFolder:GetChildren()) do
-	if not (WeaponContainer:IsA("Model") and WeaponContainer:FindFirstChild(WeaponContainer.Name .. " Logic")) then -- No weapon logic module means the weapon has no functionality
+	if not (WeaponContainer:IsA("Model") and WeaponContainer:FindFirstChild(WeaponContainer.Name .. " Logic")) then -- No logic module = no weapon logic
 		continue
 	end
 
