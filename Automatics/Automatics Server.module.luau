@@ -85,8 +85,8 @@ function Automatics.createSound(Parent, Id, RollOffMin)
 	return SFX
 end
 
--- Hitscan, returns 1. Raycast's result 2. Blocked (true if path obstructed)
-function Automatics.raycast(Actor: Actor, Origin: Vector3, Direction: Vector3)
+-- Hitscan
+function Automatics.raycast(Actor: Actor, Origin: Vector3, Direction: Vector3): (RaycastResult?, boolean?)
 	local Exclusions = Actor:IsA("Player") and {Actor.Character} or {Actor}
 	
 	local Character = Actor:IsA("Player") and Actor.Character or Actor
@@ -94,7 +94,7 @@ function Automatics.raycast(Actor: Actor, Origin: Vector3, Direction: Vector3)
 	if not Head then return end
 	
 	local HeadPosition = Head.Position
-	local HeadToOrigin = HeadPosition and Origin - HeadPosition
+	local HeadToOrigin = Origin - HeadPosition
 
 	for _, Hitbox in CollectionService:GetTagged("NPC Hitbox") do
 		table.insert(Exclusions, Hitbox)
