@@ -108,12 +108,14 @@ local function LoadViewmodel(WeaponName, ShouldDeleteViewmodel)
 		return
 	end
 
-	-- Hides the physical Tool because we do not want 2 guns viewable
-	for _, Part in pairs(CharacterTool:GetDescendants()) do
-		if Part:IsA("BasePart") then 
-			Part.Transparency = 1
-		elseif Part:IsA("ParticleEmitter") then
-			Part:SetAttribute("StopEmit", true)
+	if CharacterTool then
+		-- Hides the physical Tool because we do not want 2 guns viewable
+		for _, Part in pairs(CharacterTool:GetDescendants()) do
+			if Part:IsA("BasePart") then 
+				Part.Transparency = 1
+			elseif Part:IsA("ParticleEmitter") then
+				Part:SetAttribute("StopEmit", true)
+			end
 		end
 	end
 
