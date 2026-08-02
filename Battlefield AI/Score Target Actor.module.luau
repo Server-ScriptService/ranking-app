@@ -62,7 +62,7 @@ function ScoreTargetActor.setBrainStateForTarget(Bot: Model, OffsetGoal: Vector3
 	
 	local ShotAccuracy = ShotsFired > 0 and (ShotsLanded / ShotsFired) or 0
 	if DistanceToEnemySq >= BaseWeaponModel.Range.Value ^ 2 and ShotsFired >= MIN_SHOTS_FIRED_TO_SAMPLE and ShotAccuracy < 0.6 then
-		ChargeScore += 2
+		ChargeScore += 4
 	end
 
 	local NearbyActors = ScanRegion.countActorsNearCFrame(EnemyHumanoidRootPart.CFrame)
@@ -87,15 +87,15 @@ function ScoreTargetActor.setBrainStateForTarget(Bot: Model, OffsetGoal: Vector3
 	local RaycastParameters = RaycastParams.new()
 	RaycastParameters.FilterDescendantsInstances = {Bot}
 
-	local HAS_LOS_INCREASE = 3.5
+	local HAS_LOS_DECREASE = 3.5
 	local HasLOS = workspace:Raycast(HumanoidRootPart.Position, EnemyHumanoidRootPart.Position - HumanoidRootPart.Position, RaycastParameters)
 	HasLOS = HasLOS and HasLOS.Instance:IsDescendantOf(TargetInstance)
 
 	if HasLOS then
 		-- We don't actually need to go forward if we can just shoot from here
-		ChargeScore -= HAS_LOS_INCREASE * 1.8
+		ChargeScore -= HAS_LOS_DECREASE * 1.8
 	else
-		ChargeScore += HAS_LOS_INCREASE
+		ChargeScore += HAS_LOS_DECREASE
 	end
 
 	if ChargeScore >= CHARGE_THRESHOLD then
