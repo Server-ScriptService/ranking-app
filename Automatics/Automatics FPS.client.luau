@@ -107,7 +107,7 @@ local function LoadViewmodel(WeaponName, ShouldDeleteViewmodel)
 		warn("Unknown viewmodel", WeaponName)
 		return
 	end
-
+	
 	if CharacterTool then
 		-- Hides the physical Tool because we do not want 2 guns viewable
 		for _, Part in pairs(CharacterTool:GetDescendants()) do
