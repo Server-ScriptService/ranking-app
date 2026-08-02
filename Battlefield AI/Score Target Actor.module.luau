@@ -41,7 +41,7 @@ function ScoreTargetActor.setBrainStateForTarget(Bot: Model, OffsetGoal: Vector3
 	local SeatPart = Humanoid.SeatPart
 	local Cabin = SeatPart and SeatPart.Parent:FindFirstChild("Cabin")
 	if Cabin then
-		local ExitAttachment = Cabin:FindFirstChild("Exit Attachment") :: Attachment
+		local ExitAttachment = Cabin["Exit Attachment"] :: Attachment
 		Bot:PivotTo(ExitAttachment.WorldCFrame)
 	end
 	
